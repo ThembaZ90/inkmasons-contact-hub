@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 import logo from '@/assets/inkmasons-logo.png';
 
 const Footer = () => {
@@ -29,11 +29,6 @@ const Footer = () => {
               <li>
                 <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors text-sm">
                   Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/portfolio" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                  Portfolio
                 </Link>
               </li>
               <li>
@@ -94,17 +89,21 @@ const Footer = () => {
             
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a 
+                href="https://www.facebook.com/share/1FX78u3QJu/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a 
+                href="https://www.instagram.com/inkmasons?igsh=MXgycnYyem1uc2h3OQ==" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
