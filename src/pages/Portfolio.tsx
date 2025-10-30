@@ -7,44 +7,56 @@ import { Link } from 'react-router-dom';
 const Portfolio = () => {
   const projects = [
     {
-      title: 'Corporate Event - Tech Conference 2024',
-      category: 'Event Merchandise',
-      description: '500+ custom t-shirts, badges, and swag bags for a major tech conference',
-      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop'
+      title: 'Music Festival Merchandise Collection',
+      category: 'Music Festival',
+      description: 'Complete merchandise line for a multi-day music festival featuring custom t-shirts, hoodies, caps, and eco-friendly tote bags with vibrant festival branding.',
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+      featured: true,
+      tags: ['T-Shirts', 'Hoodies', 'Caps', 'Tote Bags']
     },
     {
-      title: 'Sports Team Uniforms',
-      category: 'Custom Apparel',
-      description: 'Complete uniform sets for a local soccer league with embroidered logos',
-      image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800&h=600&fit=crop'
+      title: 'Corporate Conference Package',
+      category: 'Corporate Event',
+      description: 'Professional branded materials for a technology conference including custom polo shirts, branded notebooks, lanyards, and premium gift sets.',
+      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop',
+      featured: false,
+      tags: ['Polo Shirts', 'Lanyards', 'Notebooks']
     },
     {
-      title: 'Premium Corporate Gifts',
-      category: 'Corporate Gifts',
-      description: 'Luxury branded gift sets for year-end client appreciation',
-      image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=800&h=600&fit=crop'
+      title: 'Craft Brewery Brand Launch',
+      category: 'Brand Merchandise',
+      description: 'Custom apparel and drinkware collection for a local craft brewery\'s brand launch including branded t-shirts, enamel mugs, and signature glassware.',
+      image: 'https://images.unsplash.com/photo-1436076863939-06870fe779c2?w=800&h=600&fit=crop',
+      featured: true,
+      tags: ['T-Shirts', 'Enamel Mugs', 'Caps']
     },
     {
-      title: 'Music Festival Merchandise',
-      category: 'Event Merchandise',
-      description: 'Limited edition hoodies, caps, and accessories for a summer music festival',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop'
+      title: 'Desert Festival Gear Collection',
+      category: 'Festival Event',
+      description: 'Durable and functional merchandise for an outdoor desert festival including UV-protective bandanas, insulated water bottles, and weather-resistant apparel.',
+      image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=600&fit=crop',
+      featured: false,
+      tags: ['Bandanas', 'Water Bottles', 'UV Clothing']
     },
     {
-      title: 'Startup Brand Package',
-      category: 'Brand Design',
-      description: 'Complete brand identity including logo, business cards, and promotional materials',
-      image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop'
+      title: 'Tech Startup Team Apparel',
+      category: 'Team Merchandise',
+      description: 'Modern team uniforms and casual wear for a growing technology startup including custom hoodies, branded t-shirts, and professional polo shirts.',
+      image: 'https://images.unsplash.com/photo-1556745753-b2904692b3cd?w=800&h=600&fit=crop',
+      featured: false,
+      tags: ['Hoodies', 'T-Shirts', 'Jackets']
     },
     {
-      title: 'Restaurant Staff Uniforms',
-      category: 'Custom Apparel',
-      description: 'Stylish and functional uniforms for front and back of house staff',
-      image: 'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&h=600&fit=crop'
+      title: 'Independent Artist Merchandise',
+      category: 'Artist Merchandise',
+      description: 'Limited edition merchandise collection for an independent musician including vintage-style tour t-shirts, enamel pins, and custom stickers.',
+      image: 'https://images.unsplash.com/photo-1598387181032-a3103a2db5b1?w=800&h=600&fit=crop',
+      featured: true,
+      tags: ['Vintage Tees', 'Pins', 'Stickers']
     }
   ];
 
-  const categories = ['All', 'Event Merchandise', 'Custom Apparel', 'Corporate Gifts', 'Brand Design'];
+  const categories = ['All Projects', 'Music Festivals', 'Corporate Events', 'Brand Merchandise', 'Custom Apparel'];
 
   return (
     <div className="min-h-screen bg-background">
@@ -88,15 +100,32 @@ const Portfolio = () => {
                       alt={project.title}
                       className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">
+                    {project.featured && (
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
+                          Featured
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <CardContent className="p-6">
+                    <div className="mb-3">
+                      <span className="inline-block border border-primary text-primary px-3 py-1 rounded-full text-xs font-medium">
                         {project.category}
                       </span>
                     </div>
-                  </div>
-                  <CardContent className="p-6">
                     <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground text-sm">{project.description}</p>
+                    <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, tagIndex) => (
+                        <span 
+                          key={tagIndex}
+                          className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
